@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Article preview component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .container{
+      display:flex;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      background-color:white;
+      flex-direction:column;
+      width:400px;
+      border-radius:15px;
+
+
+    }
+
+    body{
+      background-color:hsl(213, 44%, 95%);
+    }
+
+    .profile{
+      display:flex;
+      flex-direction:row;
+
+
+
+    }
+
+    .desc{
+      padding: 15px 35px;
+    }
+
+    .avatar{
+      border-radius:50%;
+      width:50px;
+    }
+
+    .drawers{
+      width:400px;
+      border-top-left-radius:15px;
+      border-top-right-radius:15px;
+    }
+
+    .avatarFull{
+      display:flex;
+      flex-direction:row;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .avatarText{
+      display:flex;
+      flex-direction:column;
+    }
+
+
+
+    .avatarText p{
+      margin:2px;
+    }
+
+    .avatarText{
+      margin-left:10px;
+    }
+
+    .circle{
+      background-color:hsl(213, 44%, 95%);
+      border-radius:50%;
+      width:40px;
+      height:40px;
+
+      align-items:center;
+      justify-content:center;
+      display:flex;
+    }
+
+    .share{
+      width:20px;
+    }
+    
+    .box{
+      margin-left:auto;
+      align-items:center;
+      justify-content:center;
+      display:flex;
+    }
+
+    .greyText{
+      color:grey;
+      font-weight:bold;
+    }
+
+    .bolded{
+      font-weight:bold;
+    }
+
+    .descText{
+      margin-bottom:30px;
+      color:gray;
+    }
+
+
+    .shareBar{
+      display:none;
+      flex-direction:row;
+      background-color:hsl(219, 19%, 35%);
+      border-bottom-left-radius:15px;
+      border-bottom-right-radius:15px;
+      padding:15px 35px;
+
+      justify-content:center;
+      align-items:center;
+
+
+    }
+
+    .shareBar img{
+      width:20px;
+      height:20px;
+    }
+
+    .icons{
+      margin-left:30px;
+      display:flex;
+      flex-direction:row;
+      column-gap:25px;
+    }
+
+    .shareText{
+        color:grey;
+        letter-spacing: 5px;
+
+      }
+      .triangle-down {
+        width: 0;
+        height: 0;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-top: 25px solid hsl(219, 19%, 35%);
+        display:none;
+        position:absolute;
+        transform:translate(635px,200px);
+      }
+
+    @media screen and (min-width: 600px) {
+
+
+      .container{
+        display:flex;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        background-color:white;
+        flex-direction:row;
+        width:700px;
+        border-radius:15px;
+
+
+      }
+
+      .drawers{
+        object-fit: cover;
+        width:300px;
+        height:300px;
+        object-position: 0 0;
+        border-bottom-left-radius:15px;
+        border-bottom-right-radius:0px;
+        border-top-right-radius:0px;
+      }
+
+      .shareBar{
+        position:absolute;
+        border-radius:15px;
+        transform:translate(500px,125px);
+        width:200px;
+      }
+
+
+
+
+
+    }
+
+  </style>
+</head>
+<body>
+
+
+  <main class="container">
+    <img src="images/drawers.jpg" class="drawers">
+    <div class="desc">
+      <h3>
+        Shift the overall look and feel by adding these wonderful 
+        touches to furniture in your home
+      </h3>
+
+      <p class="descText">
+        Ever been in a room and felt like something was missing? Perhaps 
+        it felt slightly bare and uninviting. I’ve got some simple tips 
+        to help you make any room feel complete.
+      </p>
+      <div class="profile">
+        <div class="avatarFull">
+          <img src="images/avatar-michelle.jpg" class="avatar">
+          <div class="avatarText">
+            <p class="bolded">Michelle Appleton</p>
+            <p class="greyText">28 Jun 2020</p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="circle">
+            <img src="images/icon-share.svg" class="share">
+          </div>
+        </div>
+      </div>
+
+      
+
+    </div>
+
+    <div class="shareBar">
+      <p class="shareText">
+        SHARE
+      </p>
+
+      <div class="icons">
+        <img src="images/icon-facebook.svg" alt="facebook">
+        <img src="images/icon-twitter.svg" alt="twitter">
+        <img src="images/icon-pinterest.svg" alt="pinterest">
+      </div>
+
+      <div class="box">
+        <div class="circle">
+          <img src="images/icon-share.svg" class="share">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="triangle-down">
+
+    </div>
+  </main>
+
+
+
+
+
+
+
+
+  <script>
+    let triangle = document.querySelector(".triangle-down");
+    let share = document.querySelectorAll(".circle");
+    let share2 = share[1];
+    let arrow = document.querySelector(".share");
+    share = share[0];
+    let profile = document.querySelector(".profile");
+    let shareBar = document.querySelector(".shareBar");
+    let isClicked = false;
+
+
+    share.addEventListener("click",event=>{
+      let x = window.innerWidth;
+
+
+
+      if(x < 600){
+        profile.style.display = "none";
+        shareBar.style.display = "flex";
+      }
+      else if(isClicked){
+
+        isClicked = false;
+        shareBar.style.display = "none";
+        share.style.backgroundColor = "hsl(213, 44%, 95%)";
+        arrow.style.filter="none";
+        triangle.style.display = "none";
+      }
+      else{
+  
+        shareBar.style.display = "flex";
+        share2.style.display = "none";
+        triangle.style.display = "block";
+        share.style.backgroundColor = "hsl(219, 19%, 35%)";
+        arrow.style.filter="brightness(100)";
+        isClicked = true;
+      }
+
+    });
+
+    share.addEventListener("mouseover",event => {
+      if(!isClicked){
+        share.style.backgroundColor = "hsl(213, 44%, 90%)";
+      }
+
+    });
+
+    share.addEventListener("mouseout",event=>{
+      if(!isClicked){
+        share.style.backgroundColor = "hsl(213, 44%, 95%)";
+      }
+    });
+
+    share2.addEventListener("click",event=>{
+        profile.style.display = "flex";
+        shareBar.style.display = "none";
+    });
+
+
+
+  </script>
+
+</body>
+</html>
